@@ -52,3 +52,5 @@ jobs:
             docker stop springboot-demo || true
             docker rm springboot-demo || true
             docker run -d --name springboot-demo -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/springboot-ci-cd-demo:latest
+
+# 实验
