@@ -7,6 +7,16 @@ on:
     branches: [ "main" ]
 
 jobs:
+  test-ssh-key:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test SSH login
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh -o StrictHostKeyChecking=no sunchenhao@10.195.28.136 "echo 'SSH works!'"
+
   build:
     runs-on: ubuntu-latest
 
